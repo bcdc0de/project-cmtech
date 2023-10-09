@@ -14,7 +14,7 @@ namespace ApiEmail
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>(); // Use o Startup.cs que você criou
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
