@@ -13,6 +13,9 @@ Para execução escolha uma das pastas (apirest-email, rpa-email) e rode o scrip
 
 ## apirest-email
 
+1. Criar projeto dotnet;
+2. Instalalção pacote AspNetCore;
+3. Instalação bibliotecas.
 
 ## rpa-email
 
