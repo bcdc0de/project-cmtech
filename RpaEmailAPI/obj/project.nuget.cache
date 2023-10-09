@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "hDksMaq4gwlcjeEmEOOSf1InIBikeaVfiYkKdNUKb73WdCh//jLqqo2MZ6xyWY4IYV2AMUrmRbY1Jsa378/HCA==",
+  "success": true,
+  "projectFilePath": "C:\\CmTech-code\\project-cmtech\\RpaEmailAPI\\RpaEmailAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Voxar\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Voxar\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Voxar\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\Voxar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\Voxar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\Voxar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

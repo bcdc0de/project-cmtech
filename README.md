@@ -13,8 +13,8 @@ Para execução escolha uma das pastas (apirest-email, rpa-email) e rode o scrip
 
 ## apirest-email
 
-1. Criar projeto dotnet: dotnet new webapi -n apiEmail;
-2. Instalalção pacote AspNetCore: dotnet add package Microsoft.AspNetCore.App;
+1. Criar projeto dotnet: dotnet new webapi -n RpaEmailAPI;
+2. 
 
 ## rpa-email
 
