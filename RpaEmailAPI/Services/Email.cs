@@ -8,7 +8,7 @@ using MailKit.Net.Imap;
 using MailKit.Security;
 using MimeKit;
 
-namespace RpaEmailAPI
+namespace RpaEmailAPI.Services
 {
     public class Email
     {

@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using RpaEmailAPI.Services;
+using RpaEmailAPI;
 
 public class Startup
 {
