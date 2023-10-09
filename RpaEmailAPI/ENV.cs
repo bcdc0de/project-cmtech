@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc;
 
 public class EmailController : ControllerBase
 {
