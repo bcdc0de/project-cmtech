@@ -1,0 +1,7 @@
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.csproj.AssemblyReference.cache
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.AssemblyInfoInputs.cache
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.AssemblyInfo.cs
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.csproj.CoreCompileInputs.cache
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\CmTech-code\project-cmtech\RpaEmailAPI\obj\Debug\net6.0\RpaEmailAPI.MvcApplicationPartsAssemblyInfo.cache
