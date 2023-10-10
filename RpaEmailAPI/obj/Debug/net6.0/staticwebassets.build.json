@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7VDsqXWj80n0xFdPiRgAltWEbEgmT89Hr+YpqBDrix4=",
+  "Source": "RpaEmailAPI",
+  "BasePath": "_content/RpaEmailAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

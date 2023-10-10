@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Npgsql;
 using MimeKit;
 
-namespace RpaEmailAPI
+namespace RpaEmailAPI.Data
 {
     public class DatabaseManager
     {

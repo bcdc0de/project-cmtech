@@ -1,7 +1,9 @@
-using RpaEmailAPI.Models;
+using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration; // Adicione esta referência
 using RpaEmailAPI.Services;
+using RpaEmailAPI.Data;
 
 namespace RpaEmailAPI.Controllers
 {
@@ -9,22 +11,34 @@ namespace RpaEmailAPI.Controllers
     [ApiController]
     public class EmailController : ControllerBase
     {
-        [HttpGet("mensagens")]
-        public IActionResult GetMessages()
-        {
-            var messages = new List<Mensagem>
-            {
-                new Mensagem
-                {
-                    Assunto = "Exemplo de Assunto",
-                    Remetente = "remetente@example.com",
-                    Destinatario = "destinatario@example.com",
-                    Data = DateTime.Now,
-                    CorpoTexto = "Este é o corpo da mensagem."
-                }
-            };
+        private readonly IConfiguration _configuration; // Injete a IConfiguration
 
-            return Ok(messages);
+        public EmailController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        [HttpGet("importar-emails")]
+        public IActionResult ImportEmails()
+        {
+            try
+            {
+                var email = new Email(iMAP_HOST: "outlook.office365.com", iMAP_USER: "rs_teste@outlook.com", iMAP_PASSWORD: "rsteste123456");
+                email.Connect().Wait(); 
+
+                var messages = email.GetMessages();
+
+                var connectionString = _configuration.GetConnectionString("DefaultConnection");
+                var databaseManager = new DatabaseManager(connectionString);
+
+                databaseManager.InsertMessages(messages);
+
+                return Ok("E-mails inseridos no banco de dados com sucesso.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Ocorreu um erro: {ex.Message}");
+            }
         }
     }
 }
