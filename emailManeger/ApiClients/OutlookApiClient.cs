@@ -3,27 +3,36 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EmailManager.Models;
+using Microsoft.Identity.Client;
 
-namespace EmailApi.ApiClients
+namespace EmailManager.ApiClients
 {
     public class OutlookApiClient
     {
         private readonly string _clientId;
         private readonly string _clientSecret;
-        private readonly HttpClient _httpClient;
+        private readonly string _redirectUri;
 
-        public OutlookApiClient(string clientId, string clientSecret)
+        public OutlookApiClient(string clientId, string clientSecret, string redirectUri)
         {
             _clientId = clientId;
             _clientSecret = clientSecret;
-            _httpClient = new HttpClient();
+            _redirectUri = redirectUri;
         }
 
-        public async Task<List<Email>> GetEmails()
+        public async Task<string> GetAccessToken()
         {
-            // Implemente a lógica real para obter e-mails do Outlook usando HttpClient ou outra biblioteca.
-            // ...
-            return new List<Email>();
+            var cca = ConfidentialClientApplicationBuilder
+                .Create(_clientId)
+                .WithClientSecret(_clientSecret)
+                .WithAuthority(new Uri("https://login.microsoftonline.com/common/v2.0"))
+                .Build();
+
+            var result = await cca.AcquireTokenForClient(scopes)
+                .ExecuteAsync();
+
+            return result.AccessToken;
         }
     }
 }
+

@@ -1,7 +1,11 @@
-using System;
-using EmailApi.ApiClients;
+// Services/OutlookService.cs
 using EmailManager.Data;
 using EmailManager.Models;
+using Microsoft.Identity.Client;
+using Microsoft.Graph;
+using EmailManager.ApiClients;
+using System.Net.Http.Headers;
+using System.Linq;
 
 namespace EmailManager.Services
 {
@@ -9,34 +13,47 @@ namespace EmailManager.Services
     {
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _dbContext;
+        private readonly OutlookApiClient _outlookApiClient;
 
-        public OutlookService(IConfiguration configuration, ApplicationDbContext dbContext)
+        public OutlookService(IConfiguration configuration, ApplicationDbContext dbContext, OutlookApiClient outlookApiClient)
         {
             _configuration = configuration;
             _dbContext = dbContext;
+            _outlookApiClient = outlookApiClient;
         }
 
         public async Task<List<Email>> GetEmails()
         {
+            try
+            {
+                var authToken = await _outlookApiClient.GetAccessToken();
+                var graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(requestMessage =>
+                {
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
+                    return Task.CompletedTask;
+                }));
 
+                var messages = await graphClient.Me.MailFolders.Inbox.Messages.Request().Top(10).GetAsync();
 
-            // Implemente a lógica para obter e-mails do Outlook usando as configurações fornecidas no appsettings.json
-            // Exemplo: Use a biblioteca do Microsoft Graph para interagir com a API do Outlook.
-            // Substitua o seguinte código pelo código real de obtenção de e-mails do Outlook.
+                var emails = messages.Select(message => new Email
+                {
+                    Assunto = message.Subject ?? "No Subject",
+                    Remetente = message.From?.EmailAddress?.Address ?? "No Sender",
+                    Destinatario = message.ToRecipients?.FirstOrDefault()?.EmailAddress?.Address ?? "No Recipient",
+                    Data = message.ReceivedDateTime?.DateTime ?? DateTime.MinValue,
+                    CorpoTexto = message.Body?.Content ?? "No Body",
+                    ServidorEmail = "Outlook"
+                }).ToList();
 
+                _dbContext.Emails.AddRange(emails);
+                await _dbContext.SaveChangesAsync();
 
-            // Lógica para obter e-mails do Outlook
-
-            // Exemplo fictício:
-            var outlookApiClient = new OutlookApiClient(_configuration["OutlookApiSettings:ClientId"],
-                                                        _configuration["OutlookApiSettings:ClientSecret"]);
-
-            var emails = await outlookApiClient.GetEmails();
-
-            _dbContext.Emails.AddRange(emails);
-            await _dbContext.SaveChangesAsync();
-
-            return emails;
+                return emails;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao obter e-mails do Outlook: {ex.Message}");
+            }
         }
     }
 }
