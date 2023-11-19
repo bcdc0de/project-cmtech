@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fb1QIh61P+GpOTxmoumm8DX7FevzC8GmYn6Z2d7QXvzpoDivVM8ZxtGwN/YSMrT/3Vsq5IyEEPVD5JKRLLIO4Q==",
+  "dgSpecHash": "vKjRW3hBGu49urvutNVseyjedAPllTfWJ1E2vZOtHiSxH2fuENUknZa649XCskoBuQnnMsYXGadZPHPKlw91Xw==",
   "success": true,
   "projectFilePath": "C:\\Project-CMtech\\project-cmtech\\emailManeger\\emailManeger.csproj",
   "expectedPackageFiles": [
@@ -35,6 +35,7 @@
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.extensions.options\\7.0.0\\microsoft.extensions.options.7.0.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.graph\\5.35.0\\microsoft.graph.5.35.0.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\microsoft.graph.auth\\1.0.0-preview.7\\microsoft.graph.auth.1.0.0-preview.7.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.graph.core\\3.1.2\\microsoft.graph.core.3.1.2.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.identity.client\\4.57.0\\microsoft.identity.client.4.57.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",

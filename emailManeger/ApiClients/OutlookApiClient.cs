@@ -22,6 +22,11 @@ namespace EmailManager.ApiClients
 
         public async Task<string> GetAccessToken()
         {
+
+            var scopes = new string[] {
+                "https://graph.microsoft.com/.default"
+            };
+
             var cca = ConfidentialClientApplicationBuilder
                 .Create(_clientId)
                 .WithClientSecret(_clientSecret)

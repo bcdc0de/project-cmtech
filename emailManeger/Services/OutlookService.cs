@@ -1,11 +1,14 @@
-// Services/OutlookService.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using EmailManager.ApiClients;
 using EmailManager.Data;
 using EmailManager.Models;
-using Microsoft.Identity.Client;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Graph;
-using EmailManager.ApiClients;
-using System.Net.Http.Headers;
-using System.Linq;
+using Microsoft.Identity.Client;
 
 namespace EmailManager.Services
 {
@@ -27,10 +30,18 @@ namespace EmailManager.Services
             try
             {
                 var authToken = await _outlookApiClient.GetAccessToken();
-                var graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(requestMessage =>
+
+                var confidentialClientApplication = ConfidentialClientApplicationBuilder
+                    .Create(_configuration["OutlookApiSettings:OutlookClientId"])
+                    .WithClientSecret(_configuration["OutlookApiSettings:OutlookClientSecret"])
+                    .WithAuthority(new Uri($"https://login.microsoftonline.com/{_configuration["OutlookApiSettings:TenantId"]}/v2.0"))
+                    .Build();
+
+                var authResult = await confidentialClientApplication.AcquireTokenForClient(new[] { "https://graph.microsoft.com/.default" }).ExecuteAsync();
+
+                var graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(async (requestMessage) =>
                 {
-                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authToken);
-                    return Task.CompletedTask;
+                    requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
                 }));
 
                 var messages = await graphClient.Me.MailFolders.Inbox.Messages.Request().Top(10).GetAsync();
