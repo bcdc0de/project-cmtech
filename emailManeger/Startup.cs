@@ -23,12 +23,10 @@ namespace EmailManager
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // Adicione os serviços necessários aqui, por exemplo:
             services.AddTransient<IEmailService, OutlookService>();
             //services.AddTransient<IEmailService, GmailService>();
             //services.AddTransient<IEmailService, YahooService>();
 
-            // Configurar a autenticação para cada serviço de e-mail
             ConfigureAuthentication(services, "OutlookApiSettings");
             ConfigureAuthentication(services, "GmailApiSettings");
             ConfigureAuthentication(services, "YahooApiSettings");
