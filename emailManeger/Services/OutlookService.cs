@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using System.Linq;
 using EmailManager.ApiClients;
 using EmailManager.Data;
 using EmailManager.Models;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Graph;
 using Microsoft.Identity.Client;
+using Microsoft.Graph;
 
 namespace EmailManager.Services
 {
@@ -24,7 +24,6 @@ namespace EmailManager.Services
             _dbContext = dbContext;
             _outlookApiClient = outlookApiClient;
         }
-
         public async Task<List<Email>> GetEmails()
         {
             try
@@ -39,14 +38,15 @@ namespace EmailManager.Services
 
                 var authResult = await confidentialClientApplication.AcquireTokenForClient(new[] { "https://graph.microsoft.com/.default" }).ExecuteAsync();
 
-                var graphClient = new GraphServiceClient(new DelegateAuthenticationProvider(async (requestMessage) =>
+                var graphClient = new GraphServiceClient(new DelegateAuthenticationProvider((requestMessage) =>
                 {
                     requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+                    return Task.CompletedTask;
                 }));
 
-                var messages = await graphClient.Me.MailFolders.Inbox.Messages.Request().Top(10).GetAsync();
+                var messages = await graphClient.Me.MailFolders["inbox"].Messages.Request().Top(10).GetAsync();
 
-                var emails = messages.Select(message => new Email
+                var emails = messages?.Select(message => new Email
                 {
                     Assunto = message.Subject ?? "No Subject",
                     Remetente = message.From?.EmailAddress?.Address ?? "No Sender",
@@ -54,7 +54,7 @@ namespace EmailManager.Services
                     Data = message.ReceivedDateTime?.DateTime ?? DateTime.MinValue,
                     CorpoTexto = message.Body?.Content ?? "No Body",
                     ServidorEmail = "Outlook"
-                }).ToList();
+                }).ToList() ?? new List<Email>();
 
                 _dbContext.Emails.AddRange(emails);
                 await _dbContext.SaveChangesAsync();

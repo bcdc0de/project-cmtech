@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using EmailManager.Services;
-using EmailApi.ApiClients;
+using EmailManager.ApiClients;
 using EmailManager.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -50,11 +50,11 @@ namespace EmailManager
             var clientSecret = Configuration[$"{sectionName}:ClientSecret"];
             var redirectUri = Configuration[$"{sectionName}:RedirectUri"];
 
-            if (!string.IsNullOrEmpty(clientId) && !string.IsNullOrEmpty(clientSecret))
+            if (!string.IsNullOrEmpty(clientId) && !string.IsNullOrEmpty(clientSecret) && !string.IsNullOrEmpty(redirectUri))
             {
                 if (sectionName == "OutlookApiSettings")
                 {
-                    services.AddTransient<OutlookApiClient>(provider => new OutlookApiClient(clientId, clientSecret));
+                    services.AddTransient<OutlookApiClient>(provider => new OutlookApiClient(clientId, clientSecret, redirectUri));
                 }
                 else if (sectionName == "GmailApiSettings")
                 {

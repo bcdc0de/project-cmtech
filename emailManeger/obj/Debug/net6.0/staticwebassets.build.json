@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "94tECfJd3nyWQJkeEHmzVBTGhIDMoaMWzINGf/X+m9A=",
+  "Source": "emailManeger",
+  "BasePath": "_content/emailManeger",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

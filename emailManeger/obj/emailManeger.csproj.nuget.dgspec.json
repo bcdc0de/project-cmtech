@@ -68,7 +68,7 @@
             },
             "Microsoft.Graph": {
               "target": "Package",
-              "version": "[5.35.0, )"
+              "version": "[4.10.0, )"
             },
             "Microsoft.Graph.Auth": {
               "target": "Package",
