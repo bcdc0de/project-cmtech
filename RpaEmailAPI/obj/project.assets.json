@@ -883,26 +883,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Voxar\\.nuget\\packages\\": {}
+    "C:\\Users\\bruno\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CmTech-code\\project-cmtech\\RpaEmailAPI\\RpaEmailAPI.csproj",
+      "projectUniqueName": "C:\\Project-CMtech\\project-cmtech\\RpaEmailAPI\\RpaEmailAPI.csproj",
       "projectName": "RpaEmailAPI",
-      "projectPath": "C:\\CmTech-code\\project-cmtech\\RpaEmailAPI\\RpaEmailAPI.csproj",
-      "packagesPath": "C:\\Users\\Voxar\\.nuget\\packages\\",
-      "outputPath": "C:\\CmTech-code\\project-cmtech\\RpaEmailAPI\\obj\\",
+      "projectPath": "C:\\Project-CMtech\\project-cmtech\\RpaEmailAPI\\RpaEmailAPI.csproj",
+      "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
+      "outputPath": "C:\\Project-CMtech\\project-cmtech\\RpaEmailAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Voxar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -957,7 +955,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.414\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.416\\RuntimeIdentifierGraph.json"
       }
     }
   }

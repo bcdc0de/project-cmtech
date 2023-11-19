@@ -4,5 +4,6 @@ CREATE TABLE mensagens (
     remetente VARCHAR(255),
     destinatario VARCHAR(255),
     data TIMESTAMP,
-    corpo_texto TEXT
+    corpo_texto TEXT,
+    servidor_email VARCHAR(255)
 );
