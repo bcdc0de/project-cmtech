@@ -1,11 +1,11 @@
 using System;
-using EmailApi.ApiClients;
-using EmailManager.Data;
-using EmailManager.Models;
+using emailManeger.ApiClients;
+using emailManeger.Data;
+using emailManeger.Models;
 using Google.Apis.Gmail.v1;
 using Google.Apis.Gmail.v1.Data;
 
-namespace EmailManager.Services
+namespace emailManeger.Services
 {
     /**public class GmailService : IEmailService
     {

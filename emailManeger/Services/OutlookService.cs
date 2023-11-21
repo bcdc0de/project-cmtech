@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Linq;
-using EmailManager.ApiClients;
-using EmailManager.Data;
-using EmailManager.Models;
+using emailManeger.ApiClients;
+using emailManeger.Data;
+using emailManeger.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Identity.Client;
 using Microsoft.Graph;
 
-namespace EmailManager.Services
+namespace emailManeger.Services
 {
     public class OutlookService : IEmailService
     {
@@ -24,6 +24,7 @@ namespace EmailManager.Services
             _dbContext = dbContext;
             _outlookApiClient = outlookApiClient;
         }
+
         public async Task<List<Email>> GetEmails()
         {
             try
@@ -61,9 +62,19 @@ namespace EmailManager.Services
 
                 return emails;
             }
+            catch (Microsoft.Graph.ServiceException serviceException)
+            {
+
+                Console.WriteLine($"Erro do Graph: {serviceException.Error.Message}");
+
+                throw;
+            }
             catch (Exception ex)
             {
-                throw new Exception($"Erro ao obter e-mails do Outlook: {ex.Message}");
+
+                Console.WriteLine($"Erro inesperado: {ex.Message}");
+
+                throw;
             }
         }
     }

@@ -1,9 +1,9 @@
 using System;
-using EmailApi.ApiClients;
-using EmailManager.Data;
-using EmailManager.Models;
+using emailManeger.ApiClients;
+using emailManeger.Data;
+using emailManeger.Models;
 
-namespace EmailManager.Services
+namespace emailManeger.Services
 {
     /**public class YahooService : IEmailService
     {

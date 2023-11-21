@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using EmailManager.Models;
+using emailManeger.Models;
 
-namespace EmailApi.ApiClients
+namespace emailManeger.ApiClients
 {
     public class GmailApiClient
     {

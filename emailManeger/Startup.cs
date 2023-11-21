@@ -5,12 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using EmailManager.Services;
-using EmailManager.ApiClients;
-using EmailManager.Data;
+using emailManeger.Services;
+using emailManeger.ApiClients;
+using emailManeger.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmailManager
+namespace emailManeger
 {
     public class Startup
     {
@@ -28,8 +28,8 @@ namespace EmailManager
             //services.AddTransient<IEmailService, YahooService>();
 
             ConfigureAuthentication(services, "OutlookApiSettings");
-            ConfigureAuthentication(services, "GmailApiSettings");
-            ConfigureAuthentication(services, "YahooApiSettings");
+            //ConfigureAuthentication(services, "GmailApiSettings");
+            //ConfigureAuthentication(services, "YahooApiSettings");
 
             services.AddControllers();
 

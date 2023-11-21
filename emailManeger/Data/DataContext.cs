@@ -1,8 +1,8 @@
 using System;
-using EmailManager.Models;
+using emailManeger.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace EmailManager.Data
+namespace emailManeger.Data
 {
     public class ApplicationDbContext : DbContext
     {

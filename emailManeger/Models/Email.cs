@@ -1,6 +1,6 @@
 using System;
 
-namespace EmailManager.Models
+namespace emailManeger.Models
 {
     public class Email
     {

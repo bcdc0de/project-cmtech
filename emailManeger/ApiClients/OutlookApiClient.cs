@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using EmailManager.Models;
+using emailManeger.Models;
 using Microsoft.Identity.Client;
 
-namespace EmailManager.ApiClients
+namespace emailManeger.ApiClients
 {
     public class OutlookApiClient
     {

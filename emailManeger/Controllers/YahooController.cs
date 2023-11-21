@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EmailManager.Controllers
+namespace emailManeger.Controllers
 {
 
     [ApiController]

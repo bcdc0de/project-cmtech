@@ -1,7 +1,7 @@
 using System;
-using EmailManager.Models;
+using emailManeger.Models;
 
-namespace EmailManager.Services
+namespace emailManeger.Services
 {
     public interface IEmailService
     {
