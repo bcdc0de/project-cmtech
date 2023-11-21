@@ -45,7 +45,10 @@ public class OutlookService : IEmailService
                 return Task.CompletedTask;
             }));
 
-            var messages = await graphClient.Me.MailFolders["inbox"].Messages.Request().Top(10).GetAsync();
+            var messages = await graphClient.Me.MailFolders["inbox"].Messages
+                .Request()
+                .Filter("isRead eq false")
+                .GetAsync();
 
             var emails = messages?.Select(message => new Email
             {
